@@ -55,7 +55,7 @@ function trend(p) {
 }
 function titleChips(p) {
   const t = T();
-  return `<div class="titles">` + p.titles.map(([pl, ev, tm]) => `<span class="tchip${pl === 1 ? " gold" : ""}"><i>${t.place(pl)}</i>${L(DATA.events[ev])}${tm === "kor" ? " · " + teamName("kor") : ""}</span>`).join("") + `</div>`;
+  return `<div class="titles">` + p.titles.map(([pl, ev, tm]) => `<span class="tchip${pl === 1 ? " gold" : ""}"><i dir="ltr">${t.place(pl)}</i>${L(DATA.events[ev])}${tm === "kor" ? (state.lang === "ar" ? " مع " : " with ") + teamName("kor") : ""}</span>`).join("") + `</div>`;
 }
 function heroRows(list) {
   return `<ul class="heroes">` + list.map(h => `<li><span>${HN(h[0])}</span><span class="hbar"><i style="width:${h[1]}%"></i></span><span class="num">${h[1]}%</span></li>`).join("") + `</ul>`;
@@ -87,7 +87,7 @@ function renderStatic() {
 
   /* path */
   $("path").innerHTML = DATA.path.map(s => { const ev = DATA.events[s.ev];
-    return `<li class="stop${s.place === 1 ? " win" : ""}"><span class="kind">${ev.intl ? t.intlKind : t.lgKind}</span><span class="place num">${t.place(s.place)}</span><span class="ev">${L(ev)}${s.mapWr ? "<br>" + fill(t.mapWr, { n: s.mapWr }) : ""}</span></li>`; }).join("");
+    return `<li class="stop${s.place === 1 ? " win" : ""}"><span class="kind">${ev.intl ? t.intlKind : t.lgKind}</span><span class="place num"><bdi dir="ltr">${t.place(s.place)}</bdi></span><span class="ev">${L(ev)}${s.mapWr ? "<br>" + fill(t.mapWr, { n: s.mapWr }) : ""}</span></li>`; }).join("");
 
   renderSlope();
 
@@ -193,7 +193,7 @@ function candHTML(p) {
       <div><h5 class="mini-h">${t.titlesTitle}</h5>${titleChips(p)}</div>
       <div><h5 class="mini-h">${t.ratingsTitle}</h5>${ratingRows(p.ratings)}</div>
       <dl class="statgrid">${["form", "above", "wr", "worst"].map(k => `<div><dt>${t.st[k]}</dt><dd class="num">${k === "above" || k === "wr" ? s[k] + "%" : s[k].toFixed(2)}</dd></div>`).join("")}</dl>
-      <div><h5 class="mini-h">${t.s3Title}</h5>${!p.s3 ? `<div class="pending">${t.noS3}</div>` : `<dl class="statgrid">${s3keys.map(k => `<div><dt>${t.st[k]}${k === "d10" ? ` <small>(${t.lower})</small>` : ""}</dt><dd class="num">${k.endsWith("10") && p.s3[k] > 100 ? fmt(p.s3[k]) : p.s3[k].toFixed(2)}</dd></div>`).join("")}</dl>`}</div>
+      <div><h5 class="mini-h">${t.s3Title}</h5>${!p.s3 ? `<div class="pending">${t.noS3}</div>` : `<dl class="statgrid">${s3keys.map(k => `<div><dt>${t.st[k]}${k === "d10" ? ` <small class="lower">${t.lower}</small>` : ""}</dt><dd class="num">${k.endsWith("10") && p.s3[k] > 100 ? fmt(p.s3[k]) : p.s3[k].toFixed(2)}</dd></div>`).join("")}</dl>`}</div>
       <div><h5 class="mini-h">${t.heroesTitle}</h5>${p.heroes.length ? heroRows(p.heroes) : `<div class="pending">${t.noS3}</div>`}</div>
       <dl class="facts-dl">
         ${p.name ? `<dt>${t.fName}</dt><dd dir="ltr" style="text-align:start">${p.name}</dd>` : ""}
@@ -233,7 +233,7 @@ function renderCompare() {
       row(t.fRank, p => `<span class="num">${t.rankIn(prim(p), lgName(prim(p).lg))}</span>`) +
       bar(t.st.score, p => prim(p).score, d2) + bar(t.st.form, p => prim(p).form, d2) + bar(t.st.above, p => prim(p).above, pc) +
       bar(t.st.wr, p => prim(p).wr, pc) + bar(t.st.worst, p => prim(p).worst, d2) + bar(t.st.ed, p => p.ed, d2) +
-      bar(t.st.e10, p => p.s3 ? p.s3.e10 : null, d2) + bar(`${t.st.d10} <small>(${t.lower})</small>`, p => p.s3 ? p.s3.d10 : null, d2, true) + bar(t.st.dmg10, p => p.s3 ? p.s3.dmg10 : null, fmt) +
+      bar(t.st.e10, p => p.s3 ? p.s3.e10 : null, d2) + bar(`${t.st.d10} <small class="lower">${t.lower}</small>`, p => p.s3 ? p.s3.d10 : null, d2, true) + bar(t.st.dmg10, p => p.s3 ? p.s3.dmg10 : null, fmt) +
       bar(t.st.intl, p => p.intl.maps ? p.intl.score : null, d2) + bar(t.st.titles, p => titleCount(p), String) +
       PCRIT().map(c => row(L(c.name), p => seg(p.ratings[c.id]))).join("") +
       row(t.trendTitle, p => Object.keys(p.stages).map(k => `${L(DATA.events[k].s)} <span class="num">${p.stages[k][1].toFixed(2)}</span>`).join("<br>")) +
