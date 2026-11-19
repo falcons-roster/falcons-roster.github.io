@@ -23,6 +23,7 @@ const ordAr = n => AR_ORD[n] || String(n);
 const ordEn = n => n + ((n % 100 >= 11 && n % 100 <= 13) ? "th" : ({ 1: "st", 2: "nd", 3: "rd" }[n % 10] || "th"));
 const prim = p => p.seasons[0];
 const titleCount = p => p.titles.filter(t => t[0] === 1).length;
+const groupTitles = ps => new Set(ps.flatMap(p => p.titles.filter(t => t[0] === 1).map(t => t[1] + ":" + t[2]))).size;
 const TOTAL_MAPS = Object.values(DATA.leagues).reduce((s, l) => s + l.maps, 0);
 const fmt = n => n.toLocaleString("en-US");
 const tile = (p, cls) => `<span class="tile ${cls || ""}${p.stays ? " kept" : ""}" aria-hidden="true">${p.photo ? `<img src="${p.photo}" alt="">` : initials(p.handle)}</span>`;
@@ -67,7 +68,7 @@ function jersey(p, cls) {
 
 /* ===================== static chapters ===================== */
 function renderStatic() {
-  const t = T(), v = { asOf: L(DATA.asOf), v: DATA.version, n: DATA.players.filter(p => p.picked).reduce((s, p) => s + titleCount(p), 0) };
+  const t = T(), v = { asOf: L(DATA.asOf), v: DATA.version, n: groupTitles(DATA.players.filter(p => p.picked)) };
   document.documentElement.lang = state.lang;
   document.documentElement.dir = state.lang === "ar" ? "rtl" : "ltr";
   document.querySelectorAll("[data-t]").forEach(el => { const s = t[el.dataset.t]; if (typeof s === "string") el.textContent = fill(s, v); });
@@ -264,7 +265,7 @@ function renderBuild(popRole) {
   const t = T(), ours = OURS(), picks = ROLE_ORDER.map(r => six[r] && byId(six[r]));
   const full = picks.filter(Boolean);
   const avg = full.length ? full.reduce((a, p) => a + prim(p).score, 0) / full.length : null;
-  const titles = full.reduce((a, p) => a + titleCount(p), 0);
+  const titles = groupTitles(full);
   const shared = ROLE_ORDER.filter(r => six[r] && six[r] === ours[r]).length;
   const igls = full.filter(p => p.igl);
   const leagues = new Set(full.map(p => prim(p).lg));
