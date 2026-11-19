@@ -332,7 +332,7 @@ const DATA = {
 const I18N = {
   en: {
     brand: "Falcons 2027 roster proposal", brandShort: "Falcons 2027", draft: "v1.0",
-    nav: { roster: "Current roster", criteria: "Criteria", candidates: "Candidates", lineup: "Lineup", build: "Your six", limits: "Caveats" },
+    nav: { home: "Home", roster: "Current roster", criteria: "Criteria", candidates: "Candidates", lineup: "Lineup", build: "Your six", limits: "Caveats" },
     kicker: "An independent proposal for season 27",
     h1: "A proposed Team Falcons Overwatch roster for 2027",
     lede: "A calm look at the numbers: where the current roster stands, how seventeen players measured up across all three 2026 stages, and the six we would line up next season.",
@@ -388,6 +388,17 @@ const I18N = {
     poolTitle: "How the hero pools fit",
     poolNote: "Share of playtime per hero in Stage 3 and the current Asia event. Each bar is one player of the pair.",
     trophyTitle: "What this lineup won in 2026",
+    homeTitle: "The proposal in one look",
+    homeLede: "One player stays, five join. Each page below covers one part of the case, so you can go straight to what you need.",
+    homeOpen: "Open",
+    pages: {
+      roster: "Where the 2026 roster stands, stage by stage, and why ChiYo stays.",
+      criteria: "The four things we scored every candidate on, and where the numbers come from.",
+      candidates: "All 17 candidates: profiles, titles, ratings, and a side-by-side comparison.",
+      lineup: "The six we picked, why each one, and what they won in 2026.",
+      build: "Pick your own six and see how they add up.",
+      limits: "What the numbers can and cannot tell you."
+    },
     bTitle: "Now build yours",
     bIntro: "Disagree with our six? Pick one player for each role and see how your lineup adds up. Your picks stay in the link, so you can send it to a friend.",
     bPickFor: "Pick a {role}",
@@ -410,7 +421,7 @@ const I18N = {
   },
   ar: {
     brand: "روستر فالكون المقترح 2027", brandShort: "روستر فالكون 2027", draft: "v1.0",
-    nav: { roster: "الروستر الحالي", criteria: "المعايير", candidates: "المرشحين", lineup: "التشكيلة", build: "تشكيلتك", limits: "ملاحظات" },
+    nav: { home: "الرئيسية", roster: "الروستر الحالي", criteria: "المعايير", candidates: "المرشحين", lineup: "التشكيلة", build: "تشكيلتك", limits: "ملاحظات" },
     kicker: "مقترح مستقل لموسم 2027",
     h1: "روستر مقترح لفالكون في أوفرواتش لموسم 27",
     lede: "قراءة هادية لموسم 2026، وين وصل الروستر الحالي، وكيف قيّمنا 17 لاعب على مدار الستيجات الثلاث، ومين الستة اللي نشوفهم الأنسب للموسم الجاي.",
@@ -465,6 +476,17 @@ const I18N = {
     poolTitle: "كيف تتكامل هيروات كل ثنائي؟",
     poolNote: "نسبة وقت اللعب لكل هيرو في ستيج 3، ومعها مابات ستيج 3 آسيا اللي انلعبت لين الحين. كل خط يمثل لاعب من الثنائي.",
     trophyTitle: "وش حقق لاعبين التشكيلة في 2026؟",
+    homeTitle: "المقترح باختصار",
+    homeLede: "لاعب واحد يبقى وخمسة ينضمون. كل صفحة تحت تشرح جزء من المقترح، فتقدر تروح مباشرة للي تبيه.",
+    homeOpen: "افتح",
+    pages: {
+      roster: "وين وصل روستر 2026 في كل ستيج، وليش ChiYo يبقى.",
+      criteria: "الأشياء الأربعة اللي قيّمنا عليها كل مرشح، ومن وين جبنا الأرقام.",
+      candidates: "المرشحين الـ17 كلهم، ملفاتهم وبطولاتهم وتقييماتهم، ومقارنة مباشرة بينهم.",
+      lineup: "الستة اللي اخترناهم، وليش كل واحد منهم، ووش حققوا في 2026.",
+      build: "سوّ تشكيلتك أنت وشوف وش تطلع أرقامها.",
+      limits: "وش تقدر تقوله الأرقام ووش ما تقدر تقوله."
+    },
     bTitle: "الحين دورك، سوّ تشكيلتك",
     bIntro: "ما عجبتك تشكيلتنا؟ اختر لاعب لكل مركز وشوف وش تطلع أرقام تشكيلتك. اختياراتك تنحفظ في الرابط، فتقدر ترسلها لخويك.",
     bPickFor: "اختر {role}",

@@ -73,8 +73,7 @@ function renderStatic() {
   document.querySelectorAll("[data-t]").forEach(el => { const s = t[el.dataset.t]; if (typeof s === "string") el.textContent = fill(s, v); });
   $("lang-ar").setAttribute("aria-pressed", state.lang === "ar");
   $("lang-en").setAttribute("aria-pressed", state.lang === "en");
-  $("nav").innerHTML = Object.keys(t.nav).map((k, i) => `<a href="#${k}" data-nav="${k}">${t.nav[k]}</a>`).join("");
-  markNav();
+  $("nav").innerHTML = Object.keys(t.nav).map((k, i) => `<a href="#/${k === "home" ? "" : k}" data-nav="${k}">${t.nav[k]}</a>`).join("");
 
   /* hero stage */
   let i = 0;
@@ -260,7 +259,7 @@ const ROLE_ORDER = ["mt", "ot", "hs", "fd", "ms", "fs"];
 const OURS = () => Object.fromEntries(ROLE_ORDER.map(r => [r, inRole(r).find(p => p.picked).id]));
 let six = OURS(), copiedAt = 0;
 { const q = new URLSearchParams(location.search).get("six"); if (q) { const ids = q.split(","); six = {}; ROLE_ORDER.forEach((r, i) => { const p = byId(ids[i]); if (p && p.role === r) six[r] = p.id; }); } }
-function sixLink() { const u = new URL(location.href); u.hash = "build"; u.searchParams.set("six", ROLE_ORDER.map(r => six[r] || "").join(",")); u.searchParams.set("lang", state.lang); return u.toString(); }
+function sixLink() { const u = new URL(location.href); u.hash = "/build"; u.searchParams.set("six", ROLE_ORDER.map(r => six[r] || "").join(",")); u.searchParams.set("lang", state.lang); return u.toString(); }
 function renderBuild(popRole) {
   const t = T(), ours = OURS(), picks = ROLE_ORDER.map(r => six[r] && byId(six[r]));
   const full = picks.filter(Boolean);
@@ -299,7 +298,7 @@ document.addEventListener("click", e => {
 /* ===================== behaviour ===================== */
 let compareVisible = false, candidatesVisible = false, pillArmed = false;
 function updatePill() { const pill = $("cmpPill"), n = state.compare.length; pill.textContent = T().pill(n); pill.hidden = !(pillArmed && n >= 2 && candidatesVisible && !compareVisible); }
-function renderAll() { renderStatic(); renderCandidates(); renderBuild(); }
+function renderAll() { renderStatic(); renderCandidates(); renderBuild(); renderHome(); showPage(true); }
 
 document.addEventListener("click", e => {
   const el = e.target.closest("[data-act]"); if (!el) return;
@@ -322,7 +321,7 @@ document.addEventListener("click", e => {
     else { if (state.compare.length >= 3) state.compare.shift(); state.compare.push(id); pillArmed = true; }
     syncCmpButtons(); renderCompare();
   } else if (act === "goCompare") {
-    $("compare").scrollIntoView({ block: "start" });
+    $("compare").scrollIntoView({ block: "start", behavior: "smooth" });
   } else if (act === "focus") {
     state.focus = state.focus === el.dataset.h ? null : el.dataset.h; renderSlope();
   }
@@ -334,16 +333,26 @@ document.addEventListener("pointermove", e => { const c = e.target.closest && e.
 let ticking = false;
 addEventListener("scroll", () => { if (ticking) return; ticking = true; requestAnimationFrame(() => { const h = document.documentElement; $("progress").style.setProperty("--p", Math.min(1, h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight))); ticking = false; }); }, { passive: true });
 
-let currentNav = "";
-function markNav() { document.querySelectorAll("#nav a").forEach(a => { if (a.dataset.nav === currentNav) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); }); }
-if ("IntersectionObserver" in window) {
-  const io = new IntersectionObserver(entries => { entries.forEach(en => { if (en.isIntersecting) { currentNav = en.target.id; markNav();
-    const a = document.querySelector(`#nav a[data-nav="${currentNav}"]`); if (a && a.parentElement.scrollWidth > a.parentElement.clientWidth) a.parentElement.scrollTo({ left: a.offsetLeft - 24, behavior: "smooth" }); } }); }, { rootMargin: "-45% 0px -50% 0px" });
-  document.querySelectorAll("main .ch").forEach(s => io.observe(s));
-  new IntersectionObserver(es => { compareVisible = es[0].isIntersecting; updatePill(); }, { threshold: 0.05 }).observe($("compare"));
-  new IntersectionObserver(es => { candidatesVisible = es[0].isIntersecting; updatePill(); }).observe($("candidates"));
+const PAGES = ["roster", "criteria", "candidates", "lineup", "build", "limits"];
+let page = "";
+function routeFromHash() { const h = location.hash.replace(/^#\/?/, ""); return PAGES.includes(h) ? h : ""; }
+function showPage(first) {
+  page = routeFromHash();
+  document.body.dataset.page = page || "home";
+  document.querySelectorAll("main > section").forEach(sec => { const on = page ? sec.id === page : (sec.id === "top" || sec.id === "home"); sec.hidden = !on; });
+  document.querySelectorAll("#nav a").forEach(a => { if (a.dataset.nav === (page || "home")) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+  const a = document.querySelector(`#nav a[data-nav="${page || "home"}"]`); if (a && a.parentElement.scrollWidth > a.parentElement.clientWidth) a.parentElement.scrollTo({ left: a.offsetLeft - 24, behavior: "smooth" });
+  if (!first) scrollTo({ top: 0, behavior: "instant" });
+  document.title = (page ? T().nav[page] + " | " : "") + T().brand;
+  compareVisible = false; candidatesVisible = page === "candidates"; updatePill();
+  document.querySelectorAll(`#${page || "home"} .reveal:not(.in), #top .reveal:not(.in)`).forEach(el => el.classList.add("in"));
 }
-
+addEventListener("hashchange", () => showPage(false));
+if ("IntersectionObserver" in window) new IntersectionObserver(es => { compareVisible = es[0].isIntersecting; updatePill(); }, { threshold: 0.05 }).observe($("compare"));
+function renderHome() {
+  const t = T();
+  $("homeGrid").innerHTML = PAGES.map(k => `<a class="hcard" href="#/${k}"><h3>${t.nav[k]}</h3><p>${t.pages[k]}</p><span class="go">${t.homeOpen}</span></a>`).join("");
+}
 renderAll();
 
 /* ===== motion: background layers, tilt, count-up, bars ===== */
@@ -352,8 +361,8 @@ renderAll();
   const WING = '<svg viewBox="0 0 120 44" aria-hidden="true"><path d="M3 41C34 33 66 14 117 3M22 41C49 33 75 19 111 13M42 41C63 35 84 27 106 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>';
   document.querySelectorAll(".hero, .ch").forEach((sec, k) => {
     const fx = document.createElement("div"); fx.className = "fx"; fx.setAttribute("aria-hidden", "true");
-    let html = '<span class="orb o1"></span><span class="orb o2"></span>' + (k % 2 ? '' : '<span class="orb o3"></span>') + '<span class="spot"></span>';
-    if (!reduce) for (let i = 0; i < 7; i++) {
+    let html = '<span class="orb o1"></span><span class="orb o2"></span>' + '' + '<span class="spot"></span>';
+    if (!reduce) for (let i = 0; i < 4; i++) {
       const left = 4 + i * 13 + (Math.sin(k * 7 + i) * 4), w = 70 + ((i * 37 + k * 11) % 90), d = 22 + ((i * 7 + k * 5) % 18), dl = -((i * 5 + k * 3) % d), o = (.16 + ((i + k) % 3) * .08).toFixed(2), r = (-24 + ((i * 13) % 30)), x = (((i % 2) ? 1 : -1) * (20 + i * 8));
       html += `<span class="wing${(i + k) % 3 === 0 ? " g" : ""}" style="left:${left}%;--w:${w}px;--d:${d}s;--dl:${dl}s;--o:${o};--r:${r}deg;--x:${x}px">${WING}</span>`;
     }
