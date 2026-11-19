@@ -449,7 +449,7 @@ dt small, .cmp-label small { font-size: .7rem; color: var(--moss); font-weight: 
 .bld-opt[aria-pressed="true"] { border-color: var(--falcon); background: rgba(43, 208, 140, .12); }
 .bld-opt .tile { width: 30px; height: 30px; }
 .bld-opt .num { font-size: .78rem; color: var(--moss); }
-@media (max-width: 860px) { .bld { grid-template-columns: 1fr; } .bld-card { position: relative; top: 0; } }
+@media (max-width: 860px) { .bld { grid-template-columns: 1fr; } .bld-card { position: relative; top: 0; padding: 14px; } .bld-six { grid-template-columns: repeat(6, 1fr); gap: 6px; } .bld-slot { border-radius: 9px; } .bld-slot small { display: none; } .bld-slot b { font-size: .62rem; } .bld-slot span { padding: 0 2px 5px; } .bld-slot .igl { font-size: .5rem; padding: 1px 3px; top: 3px; inset-inline-start: 3px; } .bld-stats dd { font-size: 1.15rem; } }
 /* ===== living background: drifting glows, rising wings, a light that follows the pointer ===== */
 .hero, .ch { position: relative; isolation: isolate; }
 .ch { overflow: clip; }
