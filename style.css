@@ -363,11 +363,11 @@ dt small, .cmp-label small { font-size: .7rem; color: var(--moss); font-weight: 
 .limits span { color: var(--paper-soft); }
 
 /* footer */
-.foot { border-top: 1px solid var(--line); padding-block: 52px 80px; color: var(--moss); font-size: .875rem; }
+.foot { border-top: 1px solid var(--line); padding-block: 8px 24px; color: var(--moss); font-size: .875rem; }
 .foot-grid { display: grid; gap: 32px 64px; }
 @media (min-width: 900px) { .foot-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
 .foot h3 { font-family: var(--display); font-weight: 700; font-size: .95rem; color: var(--bone); margin-bottom: 10px; }
-.foot ul { display: grid; gap: 6px; }
+.foot ul.foot-src { display: flex; }
 .foot a { text-underline-offset: 3px; text-decoration-color: var(--line); }
 .foot a:hover { color: var(--bone); text-decoration-color: var(--moss); }
 .foot p + p { margin-top: 10px; }
@@ -509,3 +509,15 @@ body:not([data-page="home"]) main > .ch { padding-top: clamp(28px, 4vw, 52px); }
 .home-why li { position: relative; padding-inline-start: 18px; color: var(--soft); }
 .home-why li::before { content: ""; position: absolute; inset-inline-start: 0; top: .7em; width: 7px; height: 7px; border-radius: 2px; transform: rotate(45deg); background: var(--falcon); }
 @media (max-width: 860px) { .home-why { grid-template-columns: 1fr; } }
+
+/* ===== footer ===== */
+.foot-row { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; padding-block: 26px; }
+.foot-main p { color: var(--soft); font-size: .86rem; max-width: 70ch; margin: 0 0 10px; }
+.foot-src { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.foot-src a { display: inline-block; font-size: .76rem; color: var(--moss); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; text-decoration: none; transition: color .2s, border-color .2s; }
+.foot-src a:hover { color: var(--bone); border-color: var(--gold); }
+.foot-side { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+[dir="rtl"] .foot-side { align-items: flex-start; }
+.foot-x { display: inline-flex; align-items: center; gap: 8px; color: var(--bone); text-decoration: none; font-weight: 600; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; transition: border-color .2s; }
+.foot-x:hover { border-color: var(--falcon); }
+.foot-side small { color: var(--moss); font-size: .76rem; }

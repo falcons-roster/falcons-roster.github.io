@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=1795117825">
+<link rel="stylesheet" href="style.css?v=1795118205">
 </head>
 <body>
 
@@ -139,15 +139,21 @@
 </main>
 
 <footer class="foot">
-  <div class="wrap foot-grid">
-    <div><h3 data-t="srcTitle"></h3><ul id="sources"></ul></div>
-    <div><h3 data-t="aboutTitle"></h3><p data-t="aboutText"></p><p data-t="photoNote"></p><p data-t="updated"></p></div>
+  <div class="wrap foot-row">
+    <div class="foot-main">
+      <p data-t="footNote"></p>
+      <ul class="foot-src" id="sources"></ul>
+    </div>
+    <div class="foot-side">
+      <a class="foot-x" href="https://x.com/h4imp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M18.9 2H22l-7.3 8.4L23 22h-6.6l-5.1-6.7L5.4 22H2.3l7.8-9L1.5 2h6.7l4.6 6.1L18.9 2Zm-1.1 18h1.7L7.3 3.9H5.5L17.8 20Z"/></svg><bdi>@h4imp</bdi></a>
+      <small data-t="updated"></small>
+    </div>
   </div>
 </footer>
 
 <button type="button" class="cmp-pill" id="cmpPill" data-act="goCompare" hidden></button>
 
-<script src="data.js?v=1795117825"></script>
-<script src="app.js?v=1795117825"></script>
+<script src="data.js?v=1795118205"></script>
+<script src="app.js?v=1795118205"></script>
 </body>
 </html>

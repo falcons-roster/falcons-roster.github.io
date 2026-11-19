@@ -323,10 +323,10 @@ const DATA = {
   ],
 
   sources: [
-    { label: { en: "OWTV: league stats, Stages 1–3 (Korea, EMEA, North America)", ar: "إحصائيات الستيجات من OWTV: ستيج 1 و2 و3 في كوريا وEMEA وأمريكا الشمالية" }, url: "https://owtv.gg/" },
-    { label: { en: "OWTV: LAN events (Midseason Championship, Champions Clash)", ar: "بطولات اللان من OWTV: بطولة منتصف الموسم وتشامبيونز كلاش" }, url: "https://owtv.gg/tournaments/midseason-championship-owcs-2026" },
-    { label: { en: "Owtics: player profiles and 2026 placements", ar: "ملفات اللاعبين ومراكزهم في 2026 من Owtics" }, url: "https://owtics.gg/en-US/esports/player/proper" },
-    { label: { en: "Liquipedia: Team Falcons", ar: "صفحة Team Falcons في Liquipedia" }, url: "https://liquipedia.net/overwatch/Team_Falcons" }
+    { label: { en: "OWTV stages", ar: "OWTV الستيجات" }, url: "https://owtv.gg/" },
+    { label: { en: "OWTV LANs", ar: "OWTV بطولات اللان" }, url: "https://owtv.gg/tournaments/midseason-championship-owcs-2026" },
+    { label: { en: "Owtics", ar: "Owtics" }, url: "https://owtics.gg/en-US/esports/player/proper" },
+    { label: { en: "Liquipedia", ar: "Liquipedia" }, url: "https://liquipedia.net/overwatch/Team_Falcons" }
   ]
 };
 
@@ -421,11 +421,12 @@ const I18N = {
     bEmpty: "Pick a player for each role to see the full picture.",
     limTitle: "Before you judge",
     limIntro: "What the numbers can and cannot tell you.",
+    footNote: "An independent fan proposal, not linked to Team Falcons or Blizzard. The Falcons kit on the six is our own edit, for illustration only.",
     srcTitle: "Sources", aboutTitle: "About this page",
     aboutText: "An independent proposal by people who follow the scene. It has no official link to Team Falcons or Blizzard, and no one asked for it. Player names, team names and logos belong to their owners.",
     photoNote: "The six proposed players are shown in the Falcons kit as our own edits, only to illustrate the idea. They do not point to any real transfer or agreement. Every other candidate appears in his team's kit, except Ade: he is a free agent now, so his photo is from the 2025 Esports World Cup with All Gamers.",
     conceptTag: "Concept photo in the Falcons kit",
-    updated: "Last updated {asOf}. Version {v}.",
+    updated: "Updated {asOf}",
     place: p => typeof p === "number" ? p + ({ 1: "st", 2: "nd", 3: "rd" }[p] || "th") : p
   },
   ar: {
@@ -516,11 +517,12 @@ const I18N = {
     bEmpty: "اختر لاعب لكل مركز عشان تكتمل الصورة.",
     limTitle: "قبل ما تحكم",
     limIntro: "وش تقدر الأرقام تقوله، ووش ما تقدر.",
+    footNote: "مقترح مستقل من متابعين للمشهد، ما له علاقة رسمية بفالكون ولا بليزارد. وصور الستة بقميص فالكون تعديل توضيحي من عندنا.",
     srcTitle: "المصادر", aboutTitle: "عن الصفحة",
     aboutText: "هذا مقترح مستقل من ناس متابعين للمشهد، ما له أي علاقة رسمية بفالكون ولا ببليزارد، ولا انطلب من أي جهة. أسماء اللاعبين والفرق وشعاراتها حقوقها لأصحابها.",
     photoNote: "صور الستة المقترحين بقميص فالكون تعديل من عندنا عشان توضّح الفكرة بس، وما تعني إن فيه انتقال أو اتفاق حقيقي. باقي المرشحين بأطقم فرقهم، ما عدا Ade لأنه لاعب حر الحين، فصورته من كأس العالم للرياضات الإلكترونية 2025 مع All Gamers.",
     conceptTag: "صورة تخيلية بقميص فالكون",
-    updated: "آخر تحديث: {asOf}. النسخة {v}.",
+    updated: "آخر تحديث {asOf}",
     place: p => typeof p === "number" ? String(p) : p
   }
 };
