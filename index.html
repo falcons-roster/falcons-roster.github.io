@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>روستر فالكون المقترح 2027 | أوفرواتش</title>
+<meta name="description" content="An independent fan proposal for Team Falcons' 2027 Overwatch roster, built on every 2026 stage: the current roster, the criteria, every candidate and the proposed six.">
+<meta property="og:title" content="روستر مقترح لفالكون في أوفرواتش 2027">
+<meta property="og:description" content="لاعب واحد يبقى وخمسة ينضمون. مبني على 1,044 ماب رسمي من الستيجات الثلاث في 2026.">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vfzfzf-droid.github.io/falcons-roster-27/">
+<meta property="og:image" content="https://vfzfzf-droid.github.io/falcons-roster-27/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://vfzfzf-droid.github.io/falcons-roster-27/og.png">
+<meta name="theme-color" content="#0b1712">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span class="brand-long" data-t="brand"></span><span class="brand-short" data-t="brandShort"></span><span class="draft" data-t="draft"></span></div>
+    <nav class="nav" id="nav" aria-label="Chapters"></nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="lang-ar" data-act="lang" data-lang="ar" lang="ar">عربي</button>
+      <button type="button" id="lang-en" data-act="lang" data-lang="en" lang="en">EN</button>
+    </div>
+  </div>
+  <span class="progress" id="progress" aria-hidden="true"></span>
+</header>
+
+<main>
+  <section class="hero fabric" id="top">
+    <div class="big27" aria-hidden="true">27</div>
+    <div class="wrap hero-head">
+      <div>
+        <p class="kicker" data-t="kicker"></p>
+        <h1 data-t="h1"></h1>
+      </div>
+      <div class="hero-side">
+        <p class="lede" data-t="lede"></p>
+        <p class="disclaimer" data-t="heroNote"></p>
+      </div>
+    </div>
+    <div class="stage"><div class="stage-rail" id="stage"></div><p class="swipe" data-t="swipe"></p></div>
+    <div class="wrap facts" id="facts"></div>
+  </section>
+
+  <section class="ch" id="roster">
+    <div class="wrap">
+      <header class="ch-head reveal">
+        <div><h2 class="title" data-t="teamTitle"></h2></div>
+        <p data-t="teamIntro"></p>
+      </header>
+      <div class="prose"><p data-t="teamP1"></p><p data-t="teamP2"></p></div>
+      <div class="block reveal"><div class="block-head"><h3 class="sub" data-t="pathTitle"></h3></div><ol class="path" id="path"></ol></div>
+      <div class="block">
+        <div class="block-head"><div><h3 class="sub" data-t="slopeTitle"></h3><p class="sub-note" data-t="slopeNote"></p></div></div>
+        <div class="slope-wrap">
+          <div class="slope" id="slope"></div>
+          <div class="chips-wrap"><div class="chips" id="slopeChips" role="group"></div><p class="legend-note" data-t="slopeHint" style="margin-top:12px"></p></div>
+        </div>
+      </div>
+      <div class="block"><div class="block-head"><h3 class="sub" data-t="rosterTitle"></h3></div><div class="roster" id="rosterList"></div></div>
+      <div class="block callout reveal"><h3 class="sub" data-t="chiyoTitle"></h3><p data-t="chiyoText"></p></div>
+    </div>
+  </section>
+
+  <section class="ch paper" id="criteria">
+    <div class="wrap">
+      <header class="ch-head reveal">
+        <div><h2 class="title" data-t="critTitle"></h2></div>
+        <p data-t="critIntro"></p>
+      </header>
+      <div class="crit-grid" id="critGrid"></div>
+    </div>
+  </section>
+
+  <section class="ch" id="candidates">
+    <div class="wrap">
+      <header class="ch-head reveal">
+        <div><h2 class="title" data-t="candTitle"></h2></div>
+        <p data-t="candIntro"></p>
+      </header>
+      <aside class="excluded reveal" id="excluded"></aside>
+      <div class="filters" id="filters" role="group"></div>
+      <div class="depth" id="depth"></div>
+      <div class="compare" id="compare"></div>
+    </div>
+  </section>
+
+  <section class="ch deep fabric" id="lineup">
+    <div class="wrap">
+      <header class="ch-head reveal">
+        <div><h2 class="title" data-t="luTitle"></h2></div>
+        <p><span data-t="luIntro"></span> <span class="lu-total" data-t="luTitles"></span></p>
+      </header>
+      <div id="lineupBody"></div>
+      <div class="pool reveal"><div><h3 class="sub" data-t="poolTitle"></h3><p class="sub-note" data-t="poolNote"></p></div><div class="pool-grid" id="pool"></div></div>
+      <div class="trophy"><h3 class="sub" data-t="trophyTitle"></h3><ul class="trophy-list" id="trophies"></ul></div>
+      </div>
+  </section>
+
+  <section class="ch" id="build">
+    <div class="wrap">
+      <header class="ch-head reveal">
+        <div><h2 class="title" data-t="bTitle"></h2></div>
+        <p data-t="bIntro"></p>
+      </header>
+      <div class="bld" id="bld"></div>
+    </div>
+  </section>
+
+  <section class="ch paper" id="limits">
+    <div class="wrap">
+      <header class="ch-head reveal">
+        <div><h2 class="title" data-t="limTitle"></h2></div>
+        <p data-t="limIntro"></p>
+      </header>
+      <ol class="limits" id="limitsList"></ol>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div><h3 data-t="srcTitle"></h3><ul id="sources"></ul></div>
+    <div><h3 data-t="aboutTitle"></h3><p data-t="aboutText"></p><p data-t="photoNote"></p><p data-t="updated"></p></div>
+  </div>
+</footer>
+
+<button type="button" class="cmp-pill" id="cmpPill" data-act="goCompare" hidden></button>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
