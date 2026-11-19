@@ -504,3 +504,8 @@ body[data-page="home"] #top { min-height: auto; }
 .brand { text-decoration: none; color: inherit; }
 
 body:not([data-page="home"]) main > .ch { padding-top: clamp(28px, 4vw, 52px); }
+.home-h { font-family: var(--display); font-size: 1.25rem; margin: 6px 0 12px; color: var(--gold); }
+.home-why { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 24px; margin: 0 0 30px; padding: 0; }
+.home-why li { position: relative; padding-inline-start: 18px; color: var(--soft); }
+.home-why li::before { content: ""; position: absolute; inset-inline-start: 0; top: .7em; width: 7px; height: 7px; border-radius: 2px; transform: rotate(45deg); background: var(--falcon); }
+@media (max-width: 860px) { .home-why { grid-template-columns: 1fr; } }
