@@ -111,7 +111,7 @@ function renderStatic() {
 
   const ex = DATA.excluded;
   $("excluded").innerHTML = `<div class="ex-head"><span class="ex-mark" aria-hidden="true">!</span><div><h3>${L(ex.title)}</h3><p>${L(ex.text)}</p></div></div>
-    <ul class="ex-list">${ex.players.map(x => `<li><span class="tile" aria-hidden="true">${initials(x.handle)}</span><div><b><bdi>${x.handle}</bdi></b><span class="ex-role"><bdi>${L(DATA.roles[x.role])}</bdi>${state.lang === "ar" ? "، " : ", "}ZETA DIVISION</span><span>${L(x.line)}</span></div></li>`).join("")}</ul>
+    <ul class="ex-list">${ex.players.map(x => `<li><span class="tile" aria-hidden="true">${initials(x.handle)}</span><div><b><bdi>${x.handle}</bdi></b><span class="ex-role"><bdi>${L(DATA.roles[x.role])}</bdi>${state.lang === "ar" ? "، " : ", "}ZETA DIVISION</span></div></li>`).join("")}</ul>
     <p class="ex-foot">${L(ex.honours)}</p>`;
   $("limitsList").innerHTML = DATA.limits.map(l => `<li><b>${l[state.lang][0]}</b><span>${l[state.lang][1]}</span></li>`).join("");
   $("sources").innerHTML = DATA.sources.map(s => `<li><a href="${s.url}" target="_blank" rel="noopener">${L(s.label)}</a></li>`).join("");
