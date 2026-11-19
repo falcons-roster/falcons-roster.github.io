@@ -2,7 +2,7 @@
 
 مقترح مستقل لروستر فالكون في أوفرواتش لموسم 2027. ما يمثل فالكون ولا بليزارد.
 
-الموقع: https://vfzfzf-droid.github.io/falcons-roster-27/
+الموقع: https://falcons-roster.github.io/
 
 ## كيف أعدّل الموقع؟
 
