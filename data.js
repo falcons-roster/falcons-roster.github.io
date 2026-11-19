@@ -390,7 +390,8 @@ const I18N = {
     homeWhy: [
       "The best tank in Korea this season (MAX), the best DPS in Korea (Proper) and the best support in EMEA (Simple).",
       "Between them they won 12 titles in 2026, including the World Cup with Korea.",
-      "Proper leads the calls, and all six are Korean, so the team talks in one language."
+      "Proper leads the calls, and all six are Korean, so the team talks in one language.",
+      "We believe DONGHAK and Proud are among the best players in Korea, and with a strong team around them they can reach a frightening level and win titles. The numbers agree: DONGHAK is Korea's fourth-ranked tank this season and Proud its fifth-ranked DPS, and both are flexible players who perform across several heroes."
     ],
     pages: {
       roster: "Where the 2026 roster stands, stage by stage, and why ChiYo stays.",
@@ -486,7 +487,8 @@ const I18N = {
     homeWhy: [
       "فيها أفضل تانك في كوريا هالموسم MAX وأفضل دي بي إس في كوريا Proper وأفضل سبورت في EMEA وهو Simple.",
       "الستة مع بعض حققوا 12 بطولة في 2026 منها كأس العالم مع منتخب كوريا.",
-      "Proper يقود الكولات والستة كلهم كوريين فالتواصل داخل اللوبي بلغة وحدة."
+      "Proper يقود الكولات والستة كلهم كوريين فالتواصل داخل اللوبي بلغة وحدة.",
+      "نؤمن إن DONGHAK و Proud من أفضل لاعبين كوريا، ومع فريق قوي حولهم يقدرون يوصلون لمستوى مرعب ويحققون البطولات. والأرقام تقول نفس الكلام فـDONGHAK رابع تانكات كوريا هالموسم و Proud خامس الدي بي إس، والاثنين لاعبين فلكسبل يلعبون أكثر من هيرو بنفس المستوى."
     ],
     pages: {
       roster: "وين وصل روستر 2026 في كل ستيج وليش ChiYo يبقى.",
