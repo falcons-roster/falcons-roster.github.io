@@ -392,3 +392,33 @@ renderAll();
     document.querySelectorAll(".trend, .heroes, .pool").forEach(el => { if (!el.dataset.io) { el.dataset.io = "1"; el.classList.add("pending"); io.observe(el); } }); };
   arm(); new MutationObserver(() => arm()).observe(document.querySelector("main"), { childList: true, subtree: true });
 })();
+
+/* ===================== hand-made layer ===================== */
+/* A pen stroke under each page title that draws itself when the page opens, a reading line along the top,
+   and the main buttons lean a little toward the cursor. Skipped for reduced motion. */
+(function pen() {
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const STROKES = ["M4 13 C 40 6, 90 15, 140 9 S 230 5, 296 11", "M3 10 C 52 15, 100 4, 156 10 S 248 15, 297 8", "M5 12 C 60 7, 118 14, 170 9 S 252 6, 295 12"];
+  document.querySelectorAll("h2.title").forEach((h, i) => {
+    const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    s.setAttribute("viewBox", "0 0 300 20"); s.setAttribute("preserveAspectRatio", "none"); s.setAttribute("aria-hidden", "true"); s.classList.add("pen-line");
+    const p = document.createElementNS("http://www.w3.org/2000/svg", "path"); p.setAttribute("d", STROKES[i % 3]); p.setAttribute("pathLength", "1");
+    s.appendChild(p); h.after(s);
+  });
+  const draw = () => document.querySelectorAll("main > section:not([hidden]) .pen-line").forEach(s => { s.classList.remove("drawn"); void s.getBoundingClientRect(); requestAnimationFrame(() => s.classList.add("drawn")); });
+  if (reduce) document.documentElement.classList.add("pen-still"); else { draw(); addEventListener("hashchange", () => setTimeout(draw, 60)); }
+
+  const bar = document.createElement("div"); bar.className = "read-line"; bar.setAttribute("aria-hidden", "true"); document.body.appendChild(bar);
+  let q = 0; const prog = () => { q = 0; const m = document.documentElement.scrollHeight - innerHeight; bar.style.transform = `scaleX(${m > 0 ? Math.min(1, scrollY / m) : 0})`; };
+  const on = () => { if (!q) q = requestAnimationFrame(prog); };
+  addEventListener("scroll", on, { passive: true }); addEventListener("resize", on); addEventListener("hashchange", () => setTimeout(on, 50)); prog();
+
+  if (reduce || !matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  document.addEventListener("pointermove", e => {
+    const b = e.target.closest && e.target.closest(".bld-acts .main, .hcard, .foot-x");
+    document.querySelectorAll(".pulled").forEach(x => { if (x !== b) { x.classList.remove("pulled"); x.style.translate = ""; } });
+    if (!b) return;
+    const r = b.getBoundingClientRect(), k = b.classList.contains("hcard") ? .04 : .2;
+    b.classList.add("pulled"); b.style.translate = `${((e.clientX - r.left - r.width / 2) * k).toFixed(1)}px ${((e.clientY - r.top - r.height / 2) * k * 1.3).toFixed(1)}px`;
+  }, { passive: true });
+})();
