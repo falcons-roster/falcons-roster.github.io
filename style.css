@@ -522,3 +522,7 @@ body:not([data-page="home"]) main > .ch { padding-top: clamp(28px, 4vw, 52px); }
 .foot-x:hover { border-color: var(--falcon); }
 .foot-side small { color: var(--moss); font-size: .76rem; }
 .home-note { display: inline-block; margin: 0 0 14px; padding: 10px 16px; border-radius: 12px; border: 1px solid rgba(200,165,93,.35); background: rgba(200,165,93,.08); color: var(--bone); font-weight: 500; }
+/* soft entrance when a page opens */
+main > section:not([hidden]) { animation: pagein .38s var(--ease) both; }
+@keyframes pagein { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { main > section:not([hidden]) { animation: none; } }
