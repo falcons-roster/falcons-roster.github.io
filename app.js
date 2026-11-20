@@ -393,20 +393,14 @@ renderAll();
   arm(); new MutationObserver(() => arm()).observe(document.querySelector("main"), { childList: true, subtree: true });
 })();
 
-/* ===================== hand-made layer ===================== */
-/* A pen stroke under each page title that draws itself when the page opens, a reading line along the top,
+/* ===================== finishing layer ===================== */
+/* A short segmented bar under each page title that slides in when the page opens, a reading line along the top,
    and the main buttons lean a little toward the cursor. Skipped for reduced motion. */
-(function pen() {
+(function finish() {
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const STROKES = ["M4 13 C 40 6, 90 15, 140 9 S 230 5, 296 11", "M3 10 C 52 15, 100 4, 156 10 S 248 15, 297 8", "M5 12 C 60 7, 118 14, 170 9 S 252 6, 295 12"];
-  document.querySelectorAll("h2.title").forEach((h, i) => {
-    const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    s.setAttribute("viewBox", "0 0 300 20"); s.setAttribute("preserveAspectRatio", "none"); s.setAttribute("aria-hidden", "true"); s.classList.add("pen-line");
-    const p = document.createElementNS("http://www.w3.org/2000/svg", "path"); p.setAttribute("d", STROKES[i % 3]); p.setAttribute("pathLength", "1");
-    s.appendChild(p); h.after(s);
-  });
-  const draw = () => document.querySelectorAll("main > section:not([hidden]) .pen-line").forEach(s => { s.classList.remove("drawn"); void s.getBoundingClientRect(); setTimeout(() => s.classList.add("drawn"), 40); });
-  if (reduce) document.documentElement.classList.add("pen-still"); else { draw(); addEventListener("hashchange", () => setTimeout(draw, 60)); }
+  document.querySelectorAll("h2.title").forEach(h => { const r = document.createElement("span"); r.className = "title-rule"; r.setAttribute("aria-hidden", "true"); r.innerHTML = "<i></i><i></i><i></i>"; h.after(r); });
+  const draw = () => document.querySelectorAll("main > section:not([hidden]) .title-rule").forEach(s => { s.classList.remove("drawn"); void s.getBoundingClientRect(); setTimeout(() => s.classList.add("drawn"), 60); });
+  if (reduce) document.documentElement.classList.add("rule-still"); else { draw(); addEventListener("hashchange", () => setTimeout(draw, 60)); }
 
   const bar = document.createElement("div"); bar.className = "read-line"; bar.setAttribute("aria-hidden", "true"); document.body.appendChild(bar);
   let q = 0; const prog = () => { q = 0; const m = document.documentElement.scrollHeight - innerHeight; bar.style.transform = `scaleX(${m > 0 ? Math.min(1, scrollY / m) : 0})`; };
