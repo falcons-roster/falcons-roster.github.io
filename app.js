@@ -405,7 +405,7 @@ renderAll();
     const p = document.createElementNS("http://www.w3.org/2000/svg", "path"); p.setAttribute("d", STROKES[i % 3]); p.setAttribute("pathLength", "1");
     s.appendChild(p); h.after(s);
   });
-  const draw = () => document.querySelectorAll("main > section:not([hidden]) .pen-line").forEach(s => { s.classList.remove("drawn"); void s.getBoundingClientRect(); requestAnimationFrame(() => s.classList.add("drawn")); });
+  const draw = () => document.querySelectorAll("main > section:not([hidden]) .pen-line").forEach(s => { s.classList.remove("drawn"); void s.getBoundingClientRect(); setTimeout(() => s.classList.add("drawn"), 40); });
   if (reduce) document.documentElement.classList.add("pen-still"); else { draw(); addEventListener("hashchange", () => setTimeout(draw, 60)); }
 
   const bar = document.createElement("div"); bar.className = "read-line"; bar.setAttribute("aria-hidden", "true"); document.body.appendChild(bar);
