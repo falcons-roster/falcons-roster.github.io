@@ -555,3 +555,4 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 80; pointer-event
 .alert-pop { margin: 8px 0 4px; padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(200,165,93,.4); background: rgba(200,165,93,.1); color: var(--bone); font-size: .9rem; }
 .alert-pop b { color: var(--gold); margin-inline-end: 8px; }
 @media (prefers-reduced-motion: reduce) { .alert-btn::after { animation: none; } }
+.lu-name-row .alert-btn { width: 26px; height: 26px; font-size: .85rem; margin-inline-start: 8px; }

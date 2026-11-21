@@ -149,8 +149,9 @@ function renderLineup() {
       const move = p.stays ? t.stays : fill(t.from, { team: teamName(p.team) });
       return `<article class="lu reveal${p.stays ? " stays" : ""}">
         <div class="lu-top"><div class="lu-photo">${p.photo ? `<img src="${p.photo}" alt="${p.handle}">` : ""}<bdi class="pcard-name">${p.handle}</bdi></div>
-          <div class="lu-text"><span class="lu-name-row"><bdi class="lu-name">${p.handle}</bdi>${p.igl ? `<span class="igl big" title="${t.iglTitle}">IGL</span>` : ""}</span><div class="lu-role"><bdi>${L(DATA.roles[r])}</bdi>${p.stays ? (state.lang === "ar" ? "، " : ", ") : ""}<b>${p.stays ? move : `<span class="team-l">${badge(p.team)}<span>${move}</span></span>`}</b></div>
+          <div class="lu-text"><span class="lu-name-row"><bdi class="lu-name">${p.handle}</bdi>${p.igl ? `<span class="igl big" title="${t.iglTitle}">IGL</span>` : ""}${p.alert ? `<button type="button" class="alert-btn" data-alert="lu-${p.id}" aria-expanded="false" aria-controls="alert-lu-${p.id}" title="${t.alertTag}">!<span class="sr">${t.alertTag}</span></button>` : ""}</span><div class="lu-role"><bdi>${L(DATA.roles[r])}</bdi>${p.stays ? (state.lang === "ar" ? "، " : ", ") : ""}<b>${p.stays ? move : `<span class="team-l">${badge(p.team)}<span>${move}</span></span>`}</b></div>
             <div class="lu-score"><b class="num">${s.score.toFixed(2)}</b><span>${t.st.score}<br>${t.rankIn(s, lgName(s.lg))}</span></div></div></div>
+        ${p.alert ? `<p class="alert-pop" id="alert-lu-${p.id}" hidden><b>${t.alertTag}</b>${L(p.alert)}</p>` : ""}
         <p class="lu-note">${L(p.note)}</p>
         <div class="lu-cols"><div><h4 class="mini-h">${t.trendTitle}</h4>${trend(p)}</div><div><h4 class="mini-h">${t.ratingsTitle}</h4>${ratingRows(p.ratings)}</div></div>
         <div><h4 class="mini-h">${t.titlesTitle}</h4>${titleChips(p)}</div>

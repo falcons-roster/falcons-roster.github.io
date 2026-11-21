@@ -240,7 +240,7 @@ const DATA = {
       heroes: [["Jetpack Cat", 61], ["Lúcio", 14], ["Doctrine", 10], ["Brigitte", 5]],
       ratings: { consistency: 5, form: 5, proven: 5, impact: 5 },
       titles: [[2, "boot", "cr"], [3, "kr1", "cr"], [2, "asia1", "cr"], [1, "clash", "cr"], [2, "kr2", "cr"], ["5–8", "msc", "cr"], [3, "kr3", "cr"], [1, "wc", "kor"]] },
-    { id: "chiyo", handle: "ChiYo", name: "Han Hyeon-seok", team: "flc", role: "ms", picked: true, stays: true, photo: "img/chiyo.webp",
+    { id: "chiyo", alert: { ar: "تشورنق مقدم في الاختيار على تشيو في حال كان متاح وقابل إنه يجي.", en: "CH0R0NG comes ahead of ChiYo in our pick if he is available and open to joining." }, handle: "ChiYo", name: "Han Hyeon-seok", team: "flc", role: "ms", picked: true, stays: true, photo: "img/chiyo.webp",
       note: { en: "Eighth of 24 Korean supports, with the steadiest line on the current roster: 5.57, 5.93, 5.28 across the three stages. With Falcons since February 2024.", ar: "الثامن من أصل 24 لاعب سبورت في كوريا وأكثر لاعب ثابت في الروستر الحالي، ومعدله في الستيجات الثلاث 5.57 ثم 5.93 ثم 5.28. مع فالكون من فبراير 2024." },
       seasons: [{ lg: "kr", maps: 140, score: 5.59, rank: 8, pop: 24, above: 56, form: 5.30, wr: 56, worst: 5.28 }],
       stages: { kr1: [53, 5.57, 62, "FLC"], kr2: [44, 5.93, 52, "FLC"], kr3: [43, 5.28, 53, "FLC"] },
