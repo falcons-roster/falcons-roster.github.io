@@ -545,3 +545,13 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 80; pointer-event
 .hcard:hover .go { transform: translateX(-6px); }
 [dir="ltr"] .hcard:hover .go { transform: translateX(6px); }
 @media (prefers-reduced-motion: reduce) { .read-line { display: none; } }
+
+/* clickable note next to a candidate */
+.alert-btn { flex: none; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--gold); background: rgba(200,165,93,.14); color: var(--gold); font-weight: 800; font-family: var(--display); cursor: pointer; align-self: center; margin-inline-end: 6px; position: relative; transition: background .2s, transform .2s; }
+.alert-btn::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--gold); opacity: 0; animation: ping 2.4s ease-out infinite; }
+@keyframes ping { 0% { transform: scale(.8); opacity: .7; } 70%, 100% { transform: scale(1.35); opacity: 0; } }
+.alert-btn:hover, .alert-btn[aria-expanded="true"] { background: var(--gold); color: #1a1408; }
+.alert-btn[aria-expanded="true"]::after { animation: none; }
+.alert-pop { margin: 8px 0 4px; padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(200,165,93,.4); background: rgba(200,165,93,.1); color: var(--bone); font-size: .9rem; }
+.alert-pop b { color: var(--gold); margin-inline-end: 8px; }
+@media (prefers-reduced-motion: reduce) { .alert-btn::after { animation: none; } }

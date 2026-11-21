@@ -184,8 +184,10 @@ function candHTML(p) {
         <span class="cand-team">${teamWith(p.team)}</span></span>
         <span class="sc" title="${t.rankIn(s, lg)}"><b class="num">${s.score.toFixed(2)}</b><small class="rk" dir="auto">${t.rankShort(s)}</small></span>${ICON.chev}
       </button>
+      ${p.alert ? `<button type="button" class="alert-btn" data-alert="${p.id}" aria-expanded="false" aria-controls="alert-${p.id}" title="${T().alertTag}">!<span class="sr">${T().alertTag}</span></button>` : ""}
       <button type="button" class="cmp-btn" data-act="cmp" data-id="${p.id}" aria-pressed="${cmp}" aria-label="${cmp ? t.rmCmp : t.addCmp}: ${p.handle}" title="${cmp ? t.rmCmp : t.addCmp}">${cmp ? ICON.minus : ICON.plus}</button>
     </div>
+    ${p.alert ? `<p class="alert-pop" id="alert-${p.id}" hidden><b>${T().alertTag}</b>${L(p.alert)}</p>` : ""}
     <div class="cand-meter" aria-hidden="true"><i style="width:${Math.max(4, s.score / best * 100)}%"></i></div>
     <div class="cand-fold" id="fold-${p.id}"><div><div class="cand-body">
       <div class="cand-hero">${portrait(p, "small")}<div><p class="cand-note">${L(p.note)}</p>${p.concept ? `<p class="concept">${t.conceptTag}</p>` : ""}</div></div>
@@ -416,3 +418,10 @@ renderAll();
     b.classList.add("pulled"); b.style.translate = `${((e.clientX - r.left - r.width / 2) * k).toFixed(1)}px ${((e.clientY - r.top - r.height / 2) * k * 1.3).toFixed(1)}px`;
   }, { passive: true });
 })();
+
+/* clickable notes next to a candidate */
+document.addEventListener("click", e => {
+  const b = e.target.closest && e.target.closest("[data-alert]"); if (!b) return;
+  const pop = document.getElementById("alert-" + b.dataset.alert); if (!pop) return;
+  const show = pop.hidden; pop.hidden = !show; b.setAttribute("aria-expanded", String(show));
+});

@@ -231,7 +231,7 @@ const DATA = {
       heroes: [["Tracer", 81], ["Shion", 13]],
       ratings: { consistency: 3, form: 4, proven: 3, impact: 3 },
       titles: [[3, "emea1", "gk"], [2, "emea2", "gk"], ["5–8", "msc", "gk"], [6, "emea3", "gk"]] },
-    { id: "chorong", handle: "CH0R0NG", name: "Sung Yoo-min", team: "cr", role: "ms", picked: false, photo: "img/chorong.webp",
+    { id: "chorong", alert: { ar: "تشورنق مقدم في الاختيار على تشيو في حال كان متاح وقابل إنه يجي.", en: "CH0R0NG comes ahead of ChiYo in our pick if he is available and open to joining." }, handle: "CH0R0NG", name: "Sung Yoo-min", team: "cr", role: "ms", picked: false, photo: "img/chorong.webp",
       note: { en: "Second of 24 Korean supports over the season (7.39), and rising each stage: 5.90, 7.90, 8.31.", ar: "الثاني من أصل 24 لاعب سبورت في كوريا على مدار الموسم بمعدل 7.39، ومستواه يرتفع كل ستيج من 5.90 إلى 7.90 ثم 8.31." },
       seasons: [{ lg: "kr", maps: 151, score: 7.39, rank: 2, pop: 24, above: 70, form: 7.97, wr: 70, worst: 5.90 }],
       stages: { kr1: [49, 5.90, 65, "CR"], kr2: [51, 7.90, 75, "CR"], kr3: [51, 8.31, 71, "CR"] },
@@ -385,6 +385,7 @@ const I18N = {
     homeTitle: "The proposal in one look",
     homeLede: "One player stays, five join. Each page below covers one part of the case, so you can go straight to what you need.",
     homeNote: "2026 fell short of Falcons' standard. The team missed Champions Clash, the first major of the season, and reached the EWC only through last season's qualification before going out early.",
+    alertTag: "Note",
     homeOpen: "Open",
     homeWhyTitle: "Why this six",
     homeWhy: [
@@ -482,6 +483,7 @@ const I18N = {
     homeTitle: "المقترح باختصار",
     homeLede: "لاعب واحد يبقى وخمسة ينضمون. كل صفحة تحت تشرح جزء من المقترح وتقدر تروح مباشرة للي تبيه.",
     homeNote: "موسم 2026 ما كان على مستوى فالكون، فالفريق غاب عن تشامبيونز كلاش أول ميجر في الموسم ووصل EWC بتأهله من الموسم الماضي وودّعها بدري.",
+    alertTag: "تنبيه",
     homeOpen: "افتح",
     homeWhyTitle: "ليش هالستة؟",
     homeWhy: [
