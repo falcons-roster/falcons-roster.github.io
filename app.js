@@ -11,9 +11,9 @@ const fill = (s, v) => s.replace(/\{(\w+)\}/g, (_, k) => v[k]);
 const byId = id => DATA.players.find(p => p.id === id);
 const inRole = r => DATA.players.filter(p => p.role === r);
 const teamName = k => L(DATA.teams[k]);
-const badge = k => DATA.logos[k] ? `<img class="tlogo" src="${DATA.logos[k]}" alt="">` : "";
+const badge = k => DATA.logos[k] ? `<img class="tlogo" loading="lazy" decoding="async" src="${DATA.logos[k]}" alt="">` : "";
 const teamWith = k => `<span class="team-l">${badge(k)}<span>${teamName(k)}</span></span>`;
-const portrait = (p, cls) => `<div class="pcard-photo ${cls || ""}${p.stays ? " kept-ring" : ""}">${p.photo ? `<img src="${p.photo}" alt="${p.handle}">` : `<span class="ph-init">${initials(p.handle)}</span>`}<bdi class="pcard-name">${p.handle}</bdi></div>`;
+const portrait = (p, cls) => `<div class="pcard-photo ${cls || ""}${p.stays ? " kept-ring" : ""}">${p.photo ? `<img loading="lazy" decoding="async" src="${p.photo}" alt="${p.handle}">` : `<span class="ph-init">${initials(p.handle)}</span>`}<bdi class="pcard-name">${p.handle}</bdi></div>`;
 const lineOf = r => DATA.lines.find(l => l.roles.includes(r));
 const initials = h => h.slice(0, 2).toUpperCase();
 const PCRIT = () => DATA.criteria.filter(c => c.scope === "player");
@@ -26,7 +26,7 @@ const titleCount = p => p.titles.filter(t => t[0] === 1).length;
 const groupTitles = ps => new Set(ps.flatMap(p => p.titles.filter(t => t[0] === 1).map(t => t[1] + ":" + t[2]))).size;
 const TOTAL_MAPS = Object.values(DATA.leagues).reduce((s, l) => s + l.maps, 0);
 const fmt = n => n.toLocaleString("en-US");
-const tile = (p, cls) => `<span class="tile ${cls || ""}${p.stays ? " kept" : ""}" aria-hidden="true">${p.photo ? `<img src="${p.photo}" alt="">` : initials(p.handle)}</span>`;
+const tile = (p, cls) => `<span class="tile ${cls || ""}${p.stays ? " kept" : ""}" aria-hidden="true">${p.photo ? `<img loading="lazy" decoding="async" src="${p.photo}" alt="">` : initials(p.handle)}</span>`;
 
 const COLLAR = '<svg class="collar" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true"><path d="M36 0 Q50 19 64 0 Z" fill="#0b1712"/><path d="M33 0 Q50 24 67 0" fill="none" stroke="var(--j-trim)" stroke-width="2" vector-effect="non-scaling-stroke"/><path d="M33 0 L0 24 M67 0 L100 24" fill="none" stroke="var(--j-trim)" stroke-width="1" opacity=".55" vector-effect="non-scaling-stroke"/></svg>';
 const ICON = {
@@ -62,7 +62,7 @@ function heroRows(list) {
   return `<ul class="heroes">` + list.map(h => `<li><span>${HN(h[0])}</span><span class="hbar"><i style="width:${h[1]}%"></i></span><span class="num">${h[1]}%</span></li>`).join("") + `</ul>`;
 }
 function jersey(p, cls) {
-  if (p.photo) return `<div class="jersey photo ${cls || ""}${p.stays ? " kept" : ""}"><img src="${p.photo}" alt=""></div>`;
+  if (p.photo) return `<div class="jersey photo ${cls || ""}${p.stays ? " kept" : ""}"><img loading="lazy" decoding="async" src="${p.photo}" alt=""></div>`;
   return `<div class="jersey ${cls || ""}${p.stays ? " kept" : ""}" style="--len:${p.handle.length}">${COLLAR}<bdi class="jname">${p.handle}</bdi></div>`;
 }
 
@@ -80,7 +80,7 @@ function renderStatic() {
   let i = 0;
   $("stage").innerHTML = DATA.lines.map(line => `<div class="stage-line"><h2>${L(line)}</h2><div class="stage-pair">` +
     line.roles.map(r => { const p = inRole(r).find(x => x.picked); if (!p) return "";
-      return `<figure class="pcard${p.stays ? " stays" : ""}" style="--i:${i++}"><div class="pcard-photo">${p.photo ? `<img src="${p.photo}" alt="${p.handle}">` : ""}<bdi class="pcard-name">${p.handle}</bdi></div>
+      return `<figure class="pcard${p.stays ? " stays" : ""}" style="--i:${i++}"><div class="pcard-photo">${p.photo ? `<img loading="lazy" decoding="async" src="${p.photo}" alt="${p.handle}">` : ""}<bdi class="pcard-name">${p.handle}</bdi></div>
         <figcaption><b>${L(DATA.roles[r])}</b><span${p.stays ? ' class="keep"' : ""}>${p.stays ? t.stays : `<span class="team-l">${badge(p.team)}<span>${fill(t.from, { team: teamName(p.team) })}</span></span>`}</span></figcaption></figure>`;
     }).join("") + `</div></div>`).join("");
   $("facts").innerHTML = t.facts.map(([n, l]) => `<div class="fact"><b class="num">${n === "{maps}" ? fmt(TOTAL_MAPS) : n}</b><span>${l}</span></div>`).join("");
@@ -148,7 +148,7 @@ function renderLineup() {
     line.roles.map(r => { const p = inRole(r).find(x => x.picked); if (!p) return ""; const s = prim(p);
       const move = p.stays ? t.stays : fill(t.from, { team: teamName(p.team) });
       return `<article class="lu reveal${p.stays ? " stays" : ""}">
-        <div class="lu-top"><div class="lu-photo">${p.photo ? `<img src="${p.photo}" alt="${p.handle}">` : ""}<bdi class="pcard-name">${p.handle}</bdi></div>
+        <div class="lu-top"><div class="lu-photo">${p.photo ? `<img loading="lazy" decoding="async" src="${p.photo}" alt="${p.handle}">` : ""}<bdi class="pcard-name">${p.handle}</bdi></div>
           <div class="lu-text"><span class="lu-name-row"><bdi class="lu-name">${p.handle}</bdi>${p.igl ? `<span class="igl big" title="${t.iglTitle}">IGL</span>` : ""}${p.alert ? `<button type="button" class="alert-btn" data-alert="lu-${p.id}" aria-expanded="false" aria-controls="alert-lu-${p.id}" title="${t.alertTag}">!<span class="sr">${t.alertTag}</span></button>` : ""}</span><div class="lu-role"><bdi>${L(DATA.roles[r])}</bdi>${p.stays ? (state.lang === "ar" ? "، " : ", ") : ""}<b>${p.stays ? move : `<span class="team-l">${badge(p.team)}<span>${move}</span></span>`}</b></div>
             <div class="lu-score"><b class="num">${s.score.toFixed(2)}</b><span>${t.st.score}<br>${t.rankIn(s, lgName(s.lg))}</span></div></div></div>
         ${p.alert ? `<p class="alert-pop" id="alert-lu-${p.id}" hidden><b>${t.alertTag}</b><span>${L(p.alert)}</span></p>` : ""}
@@ -277,7 +277,7 @@ function renderBuild(popRole) {
   if (full.length === 6 && !igls.length) msgs.push(`<p>${t.bNoIgl}</p>`);
   if (igls.length > 1) msgs.push(`<p>${t.bTwoIgl}</p>`);
   if (leagues.size > 1) msgs.push(`<p>${t.bCross}</p>`);
-  const slot = (p, r) => `<div class="bld-slot${p ? " full" : ""}${p && p.id === ours[r] ? " ours" : ""}${r === popRole ? " pop" : ""}">${p && p.photo ? `<img src="${p.photo}" alt="">` : ""}${p && p.igl ? '<span class="igl">IGL</span>' : ""}<span><b><bdi>${p ? p.handle : "؟"}</bdi></b><small>${L(DATA.roles[r])}</small></span></div>`;
+  const slot = (p, r) => `<div class="bld-slot${p ? " full" : ""}${p && p.id === ours[r] ? " ours" : ""}${r === popRole ? " pop" : ""}">${p && p.photo ? `<img loading="lazy" decoding="async" src="${p.photo}" alt="">` : ""}${p && p.igl ? '<span class="igl">IGL</span>' : ""}<span><b><bdi>${p ? p.handle : "؟"}</bdi></b><small>${L(DATA.roles[r])}</small></span></div>`;
   $("bld").innerHTML = `<div class="bld-card"><div class="bld-six">${ROLE_ORDER.map((r, i) => slot(picks[i], r)).join("")}</div>
     <dl class="bld-stats">
       <div><dt>${t.bAvg}</dt><dd class="num">${avg == null ? "—" : avg.toFixed(2)}</dd></div>
