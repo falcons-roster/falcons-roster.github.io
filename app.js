@@ -151,7 +151,7 @@ function renderLineup() {
         <div class="lu-top"><div class="lu-photo">${p.photo ? `<img src="${p.photo}" alt="${p.handle}">` : ""}<bdi class="pcard-name">${p.handle}</bdi></div>
           <div class="lu-text"><span class="lu-name-row"><bdi class="lu-name">${p.handle}</bdi>${p.igl ? `<span class="igl big" title="${t.iglTitle}">IGL</span>` : ""}${p.alert ? `<button type="button" class="alert-btn" data-alert="lu-${p.id}" aria-expanded="false" aria-controls="alert-lu-${p.id}" title="${t.alertTag}">!<span class="sr">${t.alertTag}</span></button>` : ""}</span><div class="lu-role"><bdi>${L(DATA.roles[r])}</bdi>${p.stays ? (state.lang === "ar" ? "، " : ", ") : ""}<b>${p.stays ? move : `<span class="team-l">${badge(p.team)}<span>${move}</span></span>`}</b></div>
             <div class="lu-score"><b class="num">${s.score.toFixed(2)}</b><span>${t.st.score}<br>${t.rankIn(s, lgName(s.lg))}</span></div></div></div>
-        ${p.alert ? `<p class="alert-pop" id="alert-lu-${p.id}" hidden><b>${t.alertTag}</b>${L(p.alert)}</p>` : ""}
+        ${p.alert ? `<p class="alert-pop" id="alert-lu-${p.id}" hidden><b>${t.alertTag}</b><span>${L(p.alert)}</span></p>` : ""}
         <p class="lu-note">${L(p.note)}</p>
         <div class="lu-cols"><div><h4 class="mini-h">${t.trendTitle}</h4>${trend(p)}</div><div><h4 class="mini-h">${t.ratingsTitle}</h4>${ratingRows(p.ratings)}</div></div>
         <div><h4 class="mini-h">${t.titlesTitle}</h4>${titleChips(p)}</div>
@@ -185,10 +185,9 @@ function candHTML(p) {
         <span class="cand-team">${teamWith(p.team)}</span></span>
         <span class="sc" title="${t.rankIn(s, lg)}"><b class="num">${s.score.toFixed(2)}</b><small class="rk" dir="auto">${t.rankShort(s)}</small></span>${ICON.chev}
       </button>
-      ${p.alert ? `<button type="button" class="alert-btn" data-alert="${p.id}" aria-expanded="false" aria-controls="alert-${p.id}" title="${T().alertTag}">!<span class="sr">${T().alertTag}</span></button>` : ""}
       <button type="button" class="cmp-btn" data-act="cmp" data-id="${p.id}" aria-pressed="${cmp}" aria-label="${cmp ? t.rmCmp : t.addCmp}: ${p.handle}" title="${cmp ? t.rmCmp : t.addCmp}">${cmp ? ICON.minus : ICON.plus}</button>
     </div>
-    ${p.alert ? `<p class="alert-pop" id="alert-${p.id}" hidden><b>${T().alertTag}</b>${L(p.alert)}</p>` : ""}
+    ${p.alert ? `<button type="button" class="alert-chip" data-alert="${p.id}" aria-expanded="false" aria-controls="alert-${p.id}"><i aria-hidden="true">!</i>${T().alertTag}</button><p class="alert-pop" id="alert-${p.id}" hidden><b>${T().alertTag}</b><span>${L(p.alert)}</span></p>` : ""}
     <div class="cand-meter" aria-hidden="true"><i style="width:${Math.max(4, s.score / best * 100)}%"></i></div>
     <div class="cand-fold" id="fold-${p.id}"><div><div class="cand-body">
       <div class="cand-hero">${portrait(p, "small")}<div><p class="cand-note">${L(p.note)}</p>${p.concept ? `<p class="concept">${t.conceptTag}</p>` : ""}</div></div>
