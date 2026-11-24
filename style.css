@@ -563,3 +563,9 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 80; pointer-event
 .alert-chip:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { .alert-btn::after { animation: none; } }
 .lu-name-row .alert-btn { width: 26px; height: 26px; font-size: .85rem; margin-inline-start: 8px; }
+
+.home-aim { margin: 4px 0 22px; padding: 18px 22px; border-radius: 16px; border: 1px solid rgba(200,165,93,.28); background: linear-gradient(180deg, rgba(200,165,93,.07), rgba(200,165,93,.02)); max-width: 78ch; }
+.home-aim .home-h { margin-top: 0; }
+.home-aim p { margin: 8px 0 0; line-height: 1.85; color: var(--bone); }
+.seventh { margin: 28px 0 8px; padding: 18px 22px; border-radius: 16px; border: 1px dashed rgba(200,165,93,.45); background: rgba(200,165,93,.05); max-width: 78ch; }
+.seventh p { margin: 8px 0 0; line-height: 1.85; }

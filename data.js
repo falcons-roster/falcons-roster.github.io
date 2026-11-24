@@ -389,6 +389,11 @@ const I18N = {
     homeNote: "2026 fell short of Falcons' standard. The current roster did not qualify for Champions Clash, the first major of the season, or for the World Finals. It would not have reached the EWC without winning it the year before, which qualified it directly, and it went out early there.",
     alertTag: "Note",
     homeOpen: "Open",
+    aimTitle: "Why these names",
+    aim1: "Falcons is the biggest esports organisation in the world, and a team that size only goes for the best: players who add to the team and win titles. That is why we went to the best players in Korea, the strongest region in the game, and ranked them by role.",
+    aim2: "Measured against Falcons' ambition, the options in Korea are limited. The goal is a team that enters every event as a contender, not just a participant, and only a handful of players are at that level. If the roster looks hard to put together, it is because the goal itself is hard.",
+    seventhTitle: "The seventh slot",
+    seventh: "We left the seventh slot open without naming anyone. The current lineup is enough, flexible and covers every meta, and we don't think signing a seventh player makes sense or would help the team right now. The slot is there so that if anything happens after Stage 1, the roster can be adjusted without undoing what has been built.",
     homeWhyTitle: "Why this six",
     homeWhy: [
       "The best tank in Korea this season (MAX), the best DPS in Korea (Proper) and the best support in EMEA (Simple).",
@@ -487,6 +492,11 @@ const I18N = {
     homeNote: "موسم 2026 ما كان على مستوى فالكون، فالروستر الحالي ما تأهل لتشامبيونز كلاش أول ميجر في الموسم ولا تأهل للورلدز. وحتى EWC ما كان بيتأهل لها لولا إنه فاز بها في العام السابق وتأهل منها مباشرة، وودّعها بدري.",
     alertTag: "تنبيه",
     homeOpen: "افتح",
+    aimTitle: "ليش اخترنا هالأسماء؟",
+    aim1: "فالكون أكبر فريق إيسبورت في العالم، وفريق بهالحجم ما يدوّر إلا على الأفضل، اللي يضيفون للفريق ويجيبون البطولات. وعشان كذا رحنا لأفضل اللاعبين في كوريا، أقوى ريجون في اللعبة، ورتبناهم بالأفضلية حسب كل رول.",
+    aim2: "والخيارات في كوريا محدودة لو حطيت طموح فالكون قدامك. الهدف إن الفريق يدخل كل بطولة وهو مرشح لها، مو بس يشارك، وهالمستوى ما يوصله إلا عدد قليل من اللاعبين. فإذا شفت الروستر صعب، هذا لأن الهدف نفسه صعب.",
+    seventhTitle: "خانة اللاعب السابع",
+    seventh: "خلينا خانة اللاعب السابع مفتوحة، بس ما رشحنا لها أحد. التشكيلة الحالية كافية وفلكسبل وتغطي كل الميتات، وما نشوف إن جلب لاعب سابع منطقي أو بيفيد الفريق الحين. الخانة موجودة عشان لو صار أي شي بعد الستيج الأول، يكون فيه مجال يتعدل الروستر بدون ما ينهدم اللي انبنى.",
     homeWhyTitle: "ليش هالستة؟",
     homeWhy: [
       "فيها أفضل تانك في كوريا هالموسم MAX وأفضل دي بي إس في كوريا Proper وأفضل سبورت في EMEA وهو Simple.",
