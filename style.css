@@ -144,7 +144,7 @@ h3.sub { font-family: var(--display); font-weight: 700; font-size: 1.12rem; line
 }
 
 /* path timeline */
-.path { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.path { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
 .stop { padding: 16px 14px 4px 0; border-inline-start: 1px solid var(--line); padding-inline-start: 14px; display: grid; gap: 4px; align-content: start; }
 .stop:first-child { border-inline-start: 0; padding-inline-start: 0; }
 .stop .place { font-family: var(--display); font-weight: 800; font-size: clamp(1.5rem, 2.8vw, 2.3rem); line-height: 1.1; direction: ltr; unicode-bidi: isolate; text-align: start; }
@@ -152,7 +152,7 @@ h3.sub { font-family: var(--display); font-weight: 700; font-size: 1.12rem; line
 .stop .ev { font-size: .8rem; color: var(--moss); line-height: 1.45; }
 .stop .kind { font-size: .72rem; color: var(--gold); }
 .stop.win .place { color: var(--falcon); }
-@media (max-width: 760px) { .path { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 18px; } .stop:nth-child(4) { border-inline-start: 0; padding-inline-start: 0; } }
+@media (max-width: 760px) { .path { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 18px; } .stop { padding-inline-start: 10px; } .stop:nth-child(5) { border-inline-start: 0; padding-inline-start: 0; } }
 
 /* slope chart */
 .slope-wrap { display: grid; gap: 18px; }
